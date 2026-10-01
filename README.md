@@ -1,50 +1,55 @@
-# Chief Operational System — Paket Antigravity
+# Super Agent Powers — General AI Agent Package
 
-Restrukturisasi dari `chief-operational-skills` menjadi dua lapisan konfigurasi native Antigravity: **Rules** (selalu aktif) dan **Skills** (on-demand, dipicu sendiri oleh agent).
+Restructuring from `super-agent-powers` into two native General AI Agent configuration layers: **Rules** (always active) and **Skills** (on-demand, self-triggered by the agent).
 
-## Peta Isi
+## Content Map
 
-| Folder | Protokol Asli | Kenapa di sini |
-|---|---|---|
-| `rules/core-identity-anti-sycophancy.md` | A1, A2 | Persona & anti-validasi harus aktif di 100% respons |
-| `rules/privacy-anonymity.md` | A4 | Larangan personalisasi harus aktif di 100% respons |
-| `rules/response-structure.md` | A7, A10, A11 | Format Date/Role/TL;DR harus konsisten di setiap respons |
-| `rules/language-terminology.md` | A9 | Aturan bahasa harus konsisten di setiap respons |
-| `skills/anti-hallucination-reasoning/` | A3 | Situasional — relevan saat ada klaim faktual |
-| `skills/controlled-assumption-clarification/` | A5 | Situasional — hanya saat prompt ambigu |
-| `skills/context-compression/` | A6 | Situasional — hanya saat command `EXECUTE CONTEXT COMPRESSION` |
-| `skills/action-recommendation-transparency/` | A8 | Situasional — saat ada aksi/rekomendasi |
-| `skills/coding-execution-standards/` | B1–B4 | Situasional — hanya saat task coding |
-| `skills/skill-self-evolution/` | B5 | Situasional — hanya setelah task kompleks terverifikasi |
+| Folder | Original Protocol | Why It's Here |
+| --- | --- | --- |
+| `rules/core-identity-anti-sycophancy.md` | A1, A2 | Persona & anti-validation must be active across 100% of responses |
+| `rules/privacy-anonymity.md` | A4 | Personalization prohibition must be active across 100% of responses |
+| `rules/response-structure.md` | A7, A10, A11 | Date/Role/TL;DR format must be consistent in every response |
+| `rules/language-terminology.md` | A9 | Language rules must be consistent in every response |
+| `skills/anti-hallucination-reasoning/` | A3 | Situational — relevant when factual claims are present |
+| `skills/controlled-assumption-clarification/` | A5 | Situational — only when the prompt is ambiguous |
+| `skills/context-compression/` | A6 | Situational — only upon the `EXECUTE CONTEXT COMPRESSION` command |
+| `skills/action-recommendation-transparency/` | A8 | Situational — when actions/recommendations occur |
+| `skills/coding-execution-standards/` | B1–B4 | Situational — only during coding tasks |
+| `skills/skill-self-evolution/` | B5 | Situational — only after a complex task is verified |
 
-## Instalasi Rules
+## Rules Installation
 
-**Kalau Chief pakai Antigravity 2.0 (IDE dengan panel Agent Manager):**
+**If Chief is using General AI Agent 2.0 (IDE with Agent Manager panel):**
 
-Cara file-based (direkomendasikan, bisa di-commit ke Git dan dipakai tim):
+File-based method (recommended, can be committed to Git and shared with the team):
+
 ```
 <workspace-root>/.agents/rules/core-identity-anti-sycophancy.md
 <workspace-root>/.agents/rules/privacy-anonymity.md
 <workspace-root>/.agents/rules/response-structure.md
 <workspace-root>/.agents/rules/language-terminology.md
+
 ```
-Cukup salin folder `rules/` ke `.agents/rules/` di root project Chief — frontmatter `trigger: always_on` di tiap file sudah otomatis dibaca Antigravity sebagai instruksi yang selalu dimuat.
 
-Cara UI (alternatif, per-file, tanpa Git):
-Agent icon (sidebar kiri) → Customizations → tab Rules → **+ Workspace** → Activation Mode: **Always On** → tempel isi file (tanpa bagian frontmatter `---`) → Save. Ulangi untuk keempat file.
+Simply copy the `rules/` folder to `.agents/rules/` at Chief's project root — the frontmatter `trigger: always_on` in each file is automatically read by the General AI Agent as instructions that are always loaded.
 
-**Kalau Chief pakai Antigravity CLI (`agy`):**
-CLI ini membaca satu file datar `GEMINI.md` atau `AGENTS.md` di direktori aktif (bukan folder `.agents/rules/`). Gabungkan isi keempat file `rules/*.md` (tanpa frontmatter) ke satu `GEMINI.md`, dipisah per bagian `##`. Untuk berlaku di semua project: `~/.gemini/GEMINI.md`.
+UI method (alternative, per-file, without Git):
+Agent icon (left sidebar) → Customizations → Rules tab → **+ Workspace** → Activation Mode: **Always On** → paste file contents (excluding the `---` frontmatter section) → Save. Repeat for all four files.
 
-> Kedua jalur (2.0 vs CLI) berbagi platform agent yang sama tapi punya lokasi konfigurasi yang didokumentasikan berbeda — cek dulu versi mana yang Chief pakai sebelum memilih jalur di atas.
+**If Chief is using General AI Agent CLI (`agy`):**
+This CLI reads a single flat `GEMINI.md` or `AGENTS.md` file in the active directory (not the `.agents/rules/` folder). Combine the contents of all four `rules/*.md` files (without frontmatter) into a single `GEMINI.md`, separated by `##` sections. To apply across all projects: `~/.gemini/GEMINI.md`.
 
-## Instalasi Skills
+> Both paths (2.0 vs. CLI) share the same agent platform but have differently documented configuration locations — verify which version Chief is using before selecting a path above.
 
-- **Workspace** (khusus satu project): salin folder `skills/*` ke `<workspace-root>/.agents/skills/` (default terbaru; `.agent/skills/` singular masih didukung untuk kompatibilitas versi lama).
-- **Global** (lintas semua project — direkomendasikan untuk paket Chief karena sifatnya bukan spesifik satu project): salin ke `~/.gemini/antigravity/skills/`.
+## Skills Installation
 
-Tidak perlu trigger manual — agent membaca `name`+`description` tiap skill di awal sesi, dan otomatis memuat isi penuh `SKILL.md` saat tugas Chief cocok dengan salah satu description. Setelah menyalin skill baru, mulai sesi/percakapan baru agar Antigravity mendeteksi ulang daftar skill.
+* **Workspace** (project-specific): copy the `skills/*` folder to `<workspace-root>/.agents/skills/` (latest default; singular `.agent/skills/` is still supported for backward compatibility).
+* **Global** (cross-project — recommended for Chief's package since it is not project-specific): copy to `~/.gemini/general-ai-agent/skills/`.
 
-## Catatan
-File di `rules/` sengaja tidak memakai frontmatter `name`/`description` ala Skill — format Rules Antigravity memakai `trigger:` (`always_on | glob | model_decision | manual`), bukan mekanisme deteksi berbasis description.
+No manual trigger required — the agent reads the `name` + `description` of each skill at the start of the session, and automatically loads the full contents of `SKILL.md` when Chief's task matches one of the descriptions. After copying new skills, start a new session/conversation so the General AI Agent can re-detect the list of skills.
+
+## Notes
+
+Files in `rules/` deliberately do not use Skill-style `name`/`description` frontmatter — the General AI Agent Rules format uses `trigger:` (`always_on | glob | model_decision | manual`), rather than a description-based detection mechanism.
+
 # super-agent-powers
